@@ -1,5 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render, HttpResponse,redirect
+from django.http import JsonResponse
 def root(request):
     return redirect("blogs/")
 
@@ -13,10 +14,17 @@ def create(request):
     return redirect("/")
 
 def show(request,number):
-    return HttpResponse("placeholder to display blog number: " + number)
+    return HttpResponse(f"placeholder to display blog number: {number}")
 
 def edit(request,numb):
-    return HttpResponse("placeholder to edit blog: " + numb)
+    return HttpResponse(f"placeholder to edit blog: {numb}")
 
 def destroy(request,number):
     return redirect("/blogs")
+
+def json_fun(request):
+    context = {
+        'title':"My first blog",
+        'content':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. "
+    }
+    return JsonResponse(context)
