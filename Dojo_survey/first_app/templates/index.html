@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+</head>
+
+<body>
+    <div class="main-container">
+        <form action="/result" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="location">Dojo Location:</label>
+                <select name="location" id="location">
+                    <option value="SanJose">San Jose</option>
+                    <option value="NewYork">New York</option>
+                    <option value="California">California</option>
+                </select>
+            </div>
+            <div>
+                <label for="Language">Favorite Language</label>
+                <select name="Language" id="Language">
+                    <option value="Python">Python</option>
+                    <option value="JS">JavaScript</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+            <div>
+                <P>Select OS:</P>
+                <ul>
+                    <li><input type="radio" name="OS" id="Windows" value="Windows"><label for="Windows">Windows</label>
+                    </li>
+                    <li><input type="radio" name="OS" id="MAC" value="MAC"><label for="MAC">MAC</label></li>
+                </ul>
+            </div>
+            <div>
+                <p>Would you like to recieve e-mails?</p>
+                <ul>
+                    <li><input type="checkbox" name="answer" id="yes" value="Yes"><label for="yes">Yes</label></li>
+                    <li><input type="checkbox" name="answer" id="no" value="No"><label for="no">No</label></li>
+                </ul>
+            </div>
+            <div id="text-box">
+                <label for="comment">Comment (optional):</label>
+                <textarea name="comment" id="comment" cols="40" rows="5"></textarea>
+            </div>
+            <input type='submit' value='Button' class="sub-button">
+        </form>
+    </div>
+</body>
+
+</html>
