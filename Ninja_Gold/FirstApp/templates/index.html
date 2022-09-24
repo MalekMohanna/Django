@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <header>
+            <p>Your Gold:</p>
+            <div class="gold-amount">{{request.session.total_gold}}</div>
+            <form action="/clear">
+                <input type="submit" value="Reset">
+            </form>
+        </header>
+        <main>
+            <section>
+                <h1>Farm</h1>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" name="where" value="farm">
+                </form>
+            </section>
+            <section>
+                <h1>Cave</h1>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" name="where" value="cave">
+                </form>
+            </section>
+            <section>
+                <h1>House</h1>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" name="where" value="house">
+                </form>
+            </section>
+            <section>
+                <h1>Quest</h1>
+                <p>(earns 0-50 gold)</p>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" name="where" value="quest">
+                </form>
+            </section>
+        </main>
+        <footer>
+            <h2>Activities</h2>
+            <div class="log">
+                <div class="log-box">
+                    {% for action in request.session.log reversed %}
+                    {% if "lost" in action %}
+                    <h3 class="text-danger">{{action}} <br></h3>
+                    {% else %}
+                    <h3 class="text-success">{{action}} <br></h3>
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
