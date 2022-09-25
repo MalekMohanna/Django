@@ -9,8 +9,8 @@ def index(request):
     return render(request,'index.html',context)
 
 def data(request):
-    User.objects.create(first_name = request.POST['first'], last_name = request.POST['last'], email= request.POST['email'], age = request.POST['age'])
-
+    x=User.objects.create(first_name = request.POST['first'], last_name = request.POST['last'], email= request.POST['email'], age = request.POST['age'])
+    x.save()
     return redirect('/')
 
 def delete(request):
