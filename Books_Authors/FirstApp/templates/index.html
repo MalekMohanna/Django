@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+    <div  class="main-container" >
+        <section class="sec-1">
+            <h1>Add a Book</h1>
+            <form action="/add" method="POST">
+                {% csrf_token %}
+                <div class="title-box" >
+                    <label  for="title" >Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="desc-box">
+                    <label for="desc">Description</label>
+                    <input type="text" name="desc" id="desc">
+                </div>
+                <button type="submit">Add</button>
+                <input type="hidden" name="book-or-author" value="book">
+            </form>
+        </section>
+        <section class="sec-2">
+            <table class="table table-hover table-bordered border-success table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                {% for book in my_book %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td><a href="books/{{book.id}}">view</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-container{
+    width: 90%;
+    height: 650px;
+    border: black solid 1px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.sec-1{
+    width: 40%;
+    height: 100%;
+    border: red solid 1px;
+}
+.sec-2{
+    width: 40%;
+    height: 100%;
+    border: red solid 1px;
+}

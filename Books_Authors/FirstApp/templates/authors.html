@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+
+<body>
+    <div class="main-container">
+        <section class="sec-1">
+            <h1>Add a Book</h1>
+            <form action="/add" method="POST">
+                {% csrf_token %}
+                <div class="title-box">
+                    <label for="f-name">First name</label>
+                    <input type="text" name="f-name" id="f-name">
+                </div>
+                <div class="title-box">
+                    <label for="l-name">Last name</label>
+                    <input type="text" name="l-name" id="l-name">
+                </div>
+                <div class="desc-box">
+                    <label for="notes">Notes</label>
+                    <input type="text" name="notes" id="notes">
+                </div>
+                <button type="submit">Add</button>
+                <input type="hidden" name="book-or-author" value="author">
+            </form>
+        </section>
+        <section class="sec-2">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                {% for author in my_author %}
+                <tr>
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href="/authors/{{author.id}}">Action</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>
