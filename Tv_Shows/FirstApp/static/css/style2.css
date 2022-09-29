@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#main-container{
+    width: 400px ;
+    height: 400px;
+    margin: 0 auto;
+}

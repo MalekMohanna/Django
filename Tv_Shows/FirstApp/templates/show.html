@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<style>
+    #show{
+        height: 400px;
+        width: 400px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <div class="container" id="show">
+    <a href="/shows">Go back</a>
+    <h1>{{created_show.id}}</h1>
+    <p>Title : {{created_show.title}}</p>
+    <p>Network: {{created_show.network}}</p>
+    <p>Release date : {{created_show.release_date}}</p>
+    <p>Description : {{created_show.descreption}}</p>
+    <p>last updated : {{created_show.updated_at}}</p>
+    <a href="/shows/{{created_show.id}}/edit/">edit</a>|<a href="/shows/{{created_show.id}}/destroy/">delete</a>
+</div>
+</body>
+
+</html>

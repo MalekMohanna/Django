@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+
+<body>
+    <div id="main-container">
+        <h1>Edit Show {{my_id}} </h1>
+        <a href="/">Go Back</a>
+        <form action="/shows/{{my_id}}/update/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="show-t">Title</label>
+                <input value="{{my_show.title}}" class="form-control" type="text" name="show-t" id="show-t">
+            </div>
+            <div class="form-group">
+                <div class="net">
+                    <label for="netw">Network</label>
+                    <input value="{{my_show.network}}" class="form-control" type="text" name="netw" id="netw">
+                </div>
+                <div class="form-group">
+                    <label for="release-d">Release Date</label>
+                    <input value="{{show_release}}" class="form-control" type="date" name="release-d" id="release-d">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="descr">Description</label>
+                <input value="{{my_show.descreption}}" class="form-control" type="text" name="descr" id="descr">
+            </div>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/shows/{{my_id}}/">Go to Show</a>
+    </div>
+</body>
+
+</html>
