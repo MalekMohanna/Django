@@ -16,6 +16,19 @@
     <div id="main-container">
         <h1>Add a New Show</h1>
         <a href="/">Go Back</a>
+        <div>
+            {% if messages %}
+            <ul class="messages mt-3 w-75 mr-5">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} p-1 pl-4 ">
+                    {% if message.tags %}
+                    <li class="">{{ message }}</li>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
         <form action="/shows/create" method="POST">
             {% csrf_token %}
             <div class="form-group" >

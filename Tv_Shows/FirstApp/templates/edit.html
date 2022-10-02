@@ -14,7 +14,7 @@
 
 <body>
     <div id="main-container">
-        <h1>Edit Show {{my_id}} </h1>
+        <h1>Edit Show {{my_show.id}} </h1>
         <a href="/">Go Back</a>
         <form action="/shows/{{my_id}}/update/" method="POST">
             {% csrf_token %}
